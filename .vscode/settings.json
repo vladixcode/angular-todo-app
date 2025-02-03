@@ -1,11 +1,11 @@
 // Source: https://gist.github.com/eneajaho/17bbcf71c44eabf56d404b028572b97b
 {
-  "[html]": {
+  "[html][css]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.codeActionsOnSave": {
       "source.fixAll.eslint": "explicit"
     },
-    "editor.formatOnSave": false
+    "editor.formatOnSave": true
   },
   "[typescript]": {
     // "editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -13,7 +13,7 @@
     "editor.codeActionsOnSave": {
       "source.fixAll.eslint": "explicit"
     },
-    "editor.formatOnSave": false
+    "editor.formatOnSave": true
   },
   "editor.suggest.snippetsPreventQuickSuggestions": false,
   "editor.inlineSuggest.enabled": true
