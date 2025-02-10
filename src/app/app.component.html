@@ -2,8 +2,12 @@
 
 <main>
   <ul id="users">
-    <li>
-      <app-user />
-    </li>
+    @for (user of users; track $index) {
+      <li>
+        <app-user [user]="user" (select)="onSelectUser($event)" />
+      </li>
+    }
   </ul>
+
+  <app-tasks [user]="selectedUser" />
 </main>
