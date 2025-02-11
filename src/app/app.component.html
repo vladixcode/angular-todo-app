@@ -2,12 +2,33 @@
 
 <main>
   <ul id="users">
-    @for (user of users; track $index) {
+    <!-- Dynamically rendering list in Angular >= 17 -->
+    <!-- @for (user of users; track $index) {
       <li>
         <app-user [user]="user" (select)="onSelectUser($event)" />
       </li>
-    }
+    } -->
+
+    <!-- Dynamically rendering list in Angular < 17 -->
+    <li *ngFor="let user of users">
+      <app-user
+        [user]="user"
+        [isSelected]="user.id === selectedUser?.id"
+        (select)="onSelectUser($event)"
+      />
+    </li>
   </ul>
 
-  <app-tasks [user]="selectedUser" />
+  <!-- Conditional rendering in Angular >= 17 -->
+  <!-- @if (selectedUser) {
+    <app-tasks [user]="selectedUser" />
+  } @else {
+    <p class="fallback">Select a user to see their tasks!</p>
+  } -->
+
+  <!-- Conditional rendering in Angular < 17 -->
+  <app-tasks *ngIf="selectedUser; else fallback" [user]="selectedUser" />
+  <ng-template #fallback>
+    <p class="fallback">Select a user to see their tasks!</p>
+  </ng-template>
 </main>

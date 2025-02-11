@@ -1,6 +1,7 @@
-import { Component, EventEmitter, Input, Output, output } from '@angular/core'
+import { Component, Input, output } from '@angular/core'
+// import { EventEmitter, output } from '@angular/core'
 
-import { User } from '../../types'
+import { type User } from './user.model'
 
 @Component({
   selector: 'app-user',
@@ -16,6 +17,7 @@ export class UserComponent {
   // @Input({ required: true }) name!: string
 
   @Input({ required: true }) user!: User
+  @Input() isSelected = false
 
   // @Output() select = new EventEmitter()
   select = output<string>()
