@@ -27,15 +27,31 @@ export class TasksService {
     },
   ]
 
+  constructor() {
+    const tasks: Task[] = JSON.parse(localStorage.getItem('tasks') ?? '[]')
+
+    if (tasks.length) {
+      this.tasks = tasks
+    }
+
+    this.storeTasks()
+  }
+
   getUserTasks(userId: string) {
     return this.tasks.filter((task) => task.userId === userId)
   }
 
   addTask(taskData: NewTaskData, userId: string) {
     this.tasks.unshift({ id: new Date().getTime().toString(), userId, ...taskData })
+    this.storeTasks()
   }
 
   removeTask(taskId: string) {
     this.tasks = this.tasks.filter((task) => task.id !== taskId)
+    this.storeTasks()
+  }
+
+  private storeTasks() {
+    localStorage.setItem('tasks', JSON.stringify(this.tasks))
   }
 }
